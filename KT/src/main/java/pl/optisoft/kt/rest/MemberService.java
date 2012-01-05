@@ -1,6 +1,10 @@
 package pl.optisoft.kt.rest;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import javax.ejb.Stateful;
@@ -9,11 +13,21 @@ import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import javax.validation.*;
-import javax.ws.rs.*;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import javax.validation.ValidationException;
+import javax.validation.Validator;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
 
 import pl.optisoft.kt.model.Member;
 
@@ -37,19 +51,28 @@ public class MemberService {
 
    @Inject
    private Validator validator;
+   
+   @Context SecurityContext security;
 
    @GET
    @Produces("text/xml")
    public List<Member> listAllMembers() {
+	   
+	  log.info("Zalogowany uzytkownik:" + security.getUserPrincipal().getName());
+	  if(security.isUserInRole("Administratorzy"))
+		  log.info("Posiada rolę: " + "Administratorzy");
       // Use @SupressWarnings to force IDE to ignore warnings about "genericizing" the results of
       // this query
       @SuppressWarnings("unchecked")
+     
+      
 
       // We recommend centralizing inline queries such as this one into @NamedQuery annotations on
       // the @Entity class
       // as described in the named query blueprint:
       // https://blueprints.dev.java.net/bpcatalog/ee5/persistence/namedquery.html
       final List<Member> results = em.createQuery("select m from Member m order by m.name").getResultList();
+      
       return results;
    }
 

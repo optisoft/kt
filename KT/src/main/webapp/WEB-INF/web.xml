@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+ <security-constraint>
+  <display-name>Secure Restful Services</display-name>
+  <web-resource-collection>
+   <web-resource-name>REST</web-resource-name>
+   <url-pattern>/rest/*</url-pattern>
+  </web-resource-collection>
+  <auth-constraint>
+   <description>All loggedin</description>
+   <role-name>*</role-name>
+  </auth-constraint>
+ </security-constraint>
+ <security-constraint>
+  <display-name>Secure KT</display-name>
+  <web-resource-collection>
+   <web-resource-name>KT</web-resource-name>
+   <url-pattern>/kt/*</url-pattern>
+  </web-resource-collection>
+  <auth-constraint>
+   <description>All loggedin</description>
+   <role-name>*</role-name>
+  </auth-constraint>
+ </security-constraint>
+ <login-config>
+  <auth-method>FORM</auth-method>
+  <form-login-config>
+   <form-login-page>/login.html</form-login-page>
+   <form-error-page>/loginError.html</form-error-page>
+  </form-login-config>
+ </login-config>
+ <!-- <security-role>
+  <role-name>Administratorzy</role-name>
+ </security-role> -->
+</web-app>
