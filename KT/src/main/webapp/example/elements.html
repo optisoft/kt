@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Page Title</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+
+	<!-- Pull in application specific css and JS -->
+	<link type="text/css" rel="stylesheet" href="resources/css/m.screen.css" />
+	<script type="text/javascript" src="resources/js/app.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			 
+		});
+	</script>
+
+</head>
+
+<body>
+	<!-- Start of first page -->
+	<div data-role="page" id="page1">
+
+		<div data-role="header">
+			<h1>Header</h1>
+		</div>
+		<!-- /header -->
+
+		<div data-role="content">
+			<ul data-role="listview" data-inset="true" data-filter="true">
+				<li><a href="#">Acura</a></li>
+				<li><a href="#">Audi</a></li>
+				<li><a href="#">BMW</a></li>
+				<li><a href="#">Cadillac</a></li>
+				<li><a href="#">Ferrari</a></li>
+			</ul>
+
+			<form>
+				<label for="slider-0">Input slider:</label> <input type="range"
+					name="slider" id="slider-0" value="25" min="0" max="100" />
+			</form>
+
+			<a href="#" data-role="button" data-icon="star">Star button</a> <a
+				href="../example/mobile.html" data-role="button" data-icon="star">Link</a>
+
+			<p>I'm first in the source order so I'm shown as the page.</p>
+			<p>
+				View internal page called <a href="#bar">bar</a>
+			</p>
+		</div>
+		<!-- /content -->
+
+		<div data-role="footer">
+			<h4>Page Footer</h4>
+		</div>
+		<!-- /footer -->
+	</div>
+	<!-- /page -->
+
+
+	<!-- Start of second page -->
+	<div data-role="page" id="bar">
+
+		<div data-role="header">
+			<h1>Bar</h1>
+		</div>
+		<!-- /header -->
+
+		<div data-role="content">
+			<p>I'm the second in the source order so I'm hidden when the page
+				loads. I'm just shown if a link that references my ID is beeing
+				clicked.</p>
+			<p>
+				<a href="#foo">Back to foo</a>
+			</p>
+		</div>
+		<!-- /content -->
+
+		<div data-role="footer">
+			<h4>Page Footer</h4>
+		</div>
+		<!-- /footer -->
+	</div>
+	<!-- /page -->
+</body>
+</html>
