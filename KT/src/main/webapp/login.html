@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Książka Teleadresowa</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css"/>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="../resources/js/app.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+
+	<link type="text/css" rel="stylesheet" href="../resources/css/m.screen.css" />
+
+</head>
+
+<body>
+	<div data-role="page" id="login" data-theme="b">
+
+		<div data-role="header" data-theme="b" data-position="fixed">
+			<a href="#" data-rel="back" data-role="button" data-inline="true" data-icon="arrow-l" data-theme="c">Wróć</a>
+			<!-- <a href="mobile.html" data-icon="home" data-iconpos="notext">Home</a>-->
+			<h1>Logowanie</h1>
+		</div>
+		<!-- /header -->
+
+		<div data-role="content">
+			<br />
+			<center><h3>Dane konta LDAP:</h3></center>
+			
+			<form name="login_form" method="POST" action="j_security_check" data-ajax="false">
+				<input type="text" name="j_username" id="username" value="" placeholder="Login" data-theme="c"/>
+				<br/>
+				<input type="password" name="j_password" id="password" value="" placeholder="Hasło" data-theme="c"/>
+				<input type="submit" data-role="none" id="j_submit" value="Submit" style="display: none;"/>
+			</form>
+			
+			<!-- <div data-role="fieldcontain" class="ui-hide-label">
+				<label for="login_input">Login:</label>
+				<input type="text" name="login" id="login_input" value="" placeholder="Login" data-theme="c"/>
+			</div>
+			<div data-role="fieldcontain" class="ui-hide-label">
+				<label for="pass_input">Hasło:</label>
+				<input type="password" name="password" id="pass_input" value="" placeholder="Hasło" data-theme="c"/>
+			</div>
+			-->
+		</div>
+		<!-- /content -->
+
+		<div data-role="footer" data-theme="b" data-position="fixed">
+			<div data-role="navbar">
+			<ul>
+				<li><a id="login_link" href="#" data-icon="check" onclick="submitLogin()">Zaloguj</a></li>
+			</ul>
+		</div><!-- /navbar -->
+
+		</div>
+		<!-- /footer -->
+	</div>
+	<!-- /page -->
+</body>
+</html>

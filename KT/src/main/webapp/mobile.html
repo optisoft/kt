@@ -7,24 +7,14 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<meta name="apple-mobile-web-app-capable" content="yes"/>
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
 
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css"/>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="resources/js/app.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
 
-	<!-- Pull in application specific css and JS -->
 	<link type="text/css" rel="stylesheet" href="resources/css/m.screen.css" />
-	<script type="text/javascript" src="resources/js/app.js"></script>
-
-	<script type="text/javascript">
-		$(document).ready(function() {
-			<!-- Przesuniecie w dol, zeby ukryc pasek adresu na Androidzie. -->
-			if (navigator.userAgent.match(/Android/i)) {
-			    window.scrollTo(0,1);
-			  }
-		});
-	</script>
 
 </head>
 
@@ -37,7 +27,56 @@
 			<center><img class="header_logo" src="resources/gfx/logo.png"/></center>
 		
 			<div data-role="controlgroup">
-				<a href="#login" data-theme="c" data-role="button"><img src="resources/gfx/login_icon.png" class="icon_front"/><p class="button_text_front">Logowanie</p></a>
+				<a href="kt/template.html" data-theme="c" data-role="button"><img src="resources/gfx/login_icon.png" class="icon_front"/><p class="button_text_front">Logowanie</p></a>
+				<a href="#help" data-theme="c" data-role="button"><img src="resources/gfx/help_icon.png" class="icon_front"/><p class="button_text_front">Pomoc</p></a>
+				<a href="index.html" data-theme="c" data-role="button"><img src="resources/gfx/info_icon.png" class="icon_front"/><p class="button_text_front">Informacje</p></a>
+			</div>
+			
+		</div>
+		
+	</div>
+	<!-- /page -->
+	
+	<div data-role="page" id="help" data-theme="b">
+	
+		<div data-role="header" data-theme="b" data-position="fixed">
+			<a href="#" data-rel="back" data-role="button" data-inline="true" data-icon="arrow-l" data-theme="c">Wróć</a>
+			<h1>Pomoc</h1>
+		</div>
+		<!-- /header -->
+
+		<div data-role="content">
+						
+			<div class="ui-body ui-body-b">
+				<div data-role="collapsible" data-theme="c" data-content-theme="d">
+					<h3>Dane dostępowe</h3>
+					<p>W celu uzyskania loginu oraz hasła należy skontaktować się Działem Bezpieczeństwa, aby uzyskać dane do konta domenowego w korporacji.</p>
+				</div>
+				<div data-role="collapsible" data-theme="c" data-content-theme="d">
+					<h3>Problemy z hasłem</h3>
+					<p>Należy sprawdzić czy konto domentowe nie jest zablokowane lub hasło nie wygasło.</p>
+				</div>
+				<div data-role="collapsible" data-theme="c" data-content-theme="d">
+					<h3>Role w aplikacji</h3>
+					<p>W aplikacji występują 2 role:</p>
+					<p>1. Rola <strong>domyślna</strong> - posiada ją każdy użytkownik aplikacji. Rola pozwala na przeglądanie informacji o wszystkich pracownikach firmy oraz edycję swoich danych.</p>
+					<p>2. Rola <strong>administratora</strong> - posiadają ją wybrania użytkownicy aplikacji. Rola pozwala na przeglądanie, edycję, dodawanie, usuwanie informacji o wszystkich pracownikach firmy.</p>
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+	<!-- /page -->
+	
+	<div data-role="page" id="info" data-theme="b">
+
+		<div data-role="content">
+		
+			<center><img class="header_logo" src="resources/gfx/logo.png"/></center>
+		
+			<div data-role="controlgroup">
+				<a href="mobile_example.html" data-ajax="false" data-theme="c" data-role="button"><img src="resources/gfx/login_icon.png" class="icon_front"/><p class="button_text_front">Logowanie</p></a>
 				<a href="index.html" data-theme="c" data-role="button"><img src="resources/gfx/help_icon.png" class="icon_front"/><p class="button_text_front">Pomoc</p></a>
 				<a href="index.html" data-theme="c" data-role="button"><img src="resources/gfx/info_icon.png" class="icon_front"/><p class="button_text_front">Informacje</p></a>
 			</div>
@@ -47,25 +86,5 @@
 	</div>
 	<!-- /page -->
 
-
-	<!-- Start of second page -->
-	<div data-role="page" id="login" data-theme="b">
-
-		<div data-role="header" data-position="fixed">
-			<h1>Logowanie</h1>
-		</div>
-		<!-- /header -->
-
-		<div data-role="content">
-			
-		</div>
-		<!-- /content -->
-
-		<div data-role="footer">
-			<h4>Page Footer</h4>
-		</div>
-		<!-- /footer -->
-	</div>
-	<!-- /page -->
 </body>
 </html>

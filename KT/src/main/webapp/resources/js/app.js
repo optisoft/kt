@@ -3,6 +3,21 @@ Core JavaScript functionality for the application.  Performs the required
 Restful calls, validates return values, and populates the member table.
  */
 
+$(document).bind("mobileinit", function(){
+	  $.mobile.defaultPageTransition = 'slideup';
+	});
+
+/* Przesuniecie w dol, zeby ukryc pasek adresu na Androidzie. */
+$(document).ready(function() {	
+			if (navigator.userAgent.match(/Android/i)) {
+			    window.scrollTo(0,1);
+			  };
+		});
+
+function submitLogin() {
+	$('#j_submit').click();
+}
+
 /* Builds the updated table for the member list */
 function buildMemberRows(members) {
    var html = '';
