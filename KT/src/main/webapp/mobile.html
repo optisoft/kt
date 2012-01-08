@@ -29,10 +29,11 @@
 			<div data-role="controlgroup">
 				<a href="kt/template.html" data-theme="c" data-role="button"><img src="resources/gfx/login_icon.png" class="icon_front"/><p class="button_text_front">Logowanie</p></a>
 				<a href="#help" data-theme="c" data-role="button"><img src="resources/gfx/help_icon.png" class="icon_front"/><p class="button_text_front">Pomoc</p></a>
-				<a href="index.html" data-theme="c" data-role="button"><img src="resources/gfx/info_icon.png" class="icon_front"/><p class="button_text_front">Informacje</p></a>
+				<a href="#info" data-theme="c" data-role="button" data-transition="flip"><img src="resources/gfx/info_icon.png" class="icon_front"/><p class="button_text_front">Informacje</p></a>
 			</div>
 			
 		</div>
+		<!-- /content -->
 		
 	</div>
 	<!-- /page -->
@@ -65,23 +66,34 @@
 			</div>
 			
 		</div>
+		<!-- /content -->
 		
 	</div>
 	<!-- /page -->
 	
 	<div data-role="page" id="info" data-theme="b">
 
+		<div data-role="header" data-theme="b" data-position="fixed">
+			<a href="#" data-rel="back" data-role="button" data-inline="true" data-icon="arrow-l" data-theme="c">Wróć</a>
+			<h1>Informacje</h1>
+		</div>
+		<!-- /header -->
+
 		<div data-role="content">
-		
-			<center><img class="header_logo" src="resources/gfx/logo.png"/></center>
-		
-			<div data-role="controlgroup">
-				<a href="mobile_example.html" data-ajax="false" data-theme="c" data-role="button"><img src="resources/gfx/login_icon.png" class="icon_front"/><p class="button_text_front">Logowanie</p></a>
-				<a href="index.html" data-theme="c" data-role="button"><img src="resources/gfx/help_icon.png" class="icon_front"/><p class="button_text_front">Pomoc</p></a>
-				<a href="index.html" data-theme="c" data-role="button"><img src="resources/gfx/info_icon.png" class="icon_front"/><p class="button_text_front">Informacje</p></a>
+						
+			<div class="ui-body ui-body-b">
+				<div data-role="collapsible" data-theme="c" data-content-theme="d">
+					<h3>Adres serwera LDAP</h3>
+					<p>127.0.0.1:389</p>
+				</div>
+				<div data-role="collapsible" data-theme="c" data-content-theme="d">
+					<h3>Kontakt</h3>
+					<p>Konrad Rogalski - kondi123@gmail.com</p>
+				</div>
 			</div>
 			
 		</div>
+		<!-- /content -->
 		
 	</div>
 	<!-- /page -->

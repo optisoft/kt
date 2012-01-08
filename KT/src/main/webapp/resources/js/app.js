@@ -82,7 +82,7 @@ function registerMember(formValues) {
 
             updateMemberTable();
          }).error(function(error) {
-            var errStatus = error.status;
+            //var errStatus = error.status;
 
             if ((error.status == 409) || (error.status == 400)) {
                console.log("Validation error registering user!");
