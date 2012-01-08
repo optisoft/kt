@@ -18,6 +18,16 @@ function submitLogin() {
 	$('#j_submit').click();
 }
 
+function submitLoginOnEnter(event) {
+	var keycode = (event.keyCode ? event.keyCode : (event.which ? event.which : event.charCode));
+	if(keycode == 13) {
+        submitLogin();
+        return false;
+    } else {
+    	return true;
+    }
+}
+
 /* Builds the updated table for the member list */
 function buildMemberRows(members) {
    var html = '';

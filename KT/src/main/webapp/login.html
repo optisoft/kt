@@ -15,7 +15,7 @@
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
 
 	<link type="text/css" rel="stylesheet" href="../resources/css/m.screen.css" />
-
+	
 </head>
 
 <body>
@@ -33,9 +33,9 @@
 			<center><h3>Dane konta LDAP:</h3></center>
 			
 			<form name="login_form" method="POST" action="j_security_check" data-ajax="false">
-				<input type="text" name="j_username" id="username" value="" placeholder="Login" data-theme="c"/>
+				<input type="text" name="j_username" id="username" value="" placeholder="Login" data-theme="c" onkeypress="submitLoginOnEnter(event)"/>
 				<br/>
-				<input type="password" name="j_password" id="password" value="" placeholder="Hasło" data-theme="c"/>
+				<input type="password" name="j_password" id="password" value="" placeholder="Hasło" data-theme="c" onkeypress="submitLoginOnEnter(event)"/>
 				<input type="submit" data-role="none" id="j_submit" value="Submit" style="display: none;"/>
 			</form>
 			
