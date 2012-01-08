@@ -1,5 +1,5 @@
 /* Core styles for the mobile version of the application */
-body {
+/*body {
    margin: 0;
    padding: 0;
    font-family: Verdana, sans-serif;
@@ -24,13 +24,31 @@ a:hover {
    color: #369;
    text-decoration: underline;
 }
-
+*/
 /* Header and footer styles */
 
+.icon_front {
+	float: left;
+	margin-top: 5px;
+   	margin-left: 5px;
+   	margin-right: 20px;
+   	margin-bottom: 5px;
+}
+
+.button_text_front {
+	float: left;
+	vertical-align: middle;
+	font-size: 16px;
+	/*margin-top: 15px;
+   	margin-left: 8px;
+   	margin-right: 8px;
+   	margin-bottom: 5px;*/
+}
+
 .header_logo{
-   float: left;
-   margin-top: 3px;
-   margin-left: 8px;
+   text-align: center;
+   /*margin-top: 3px;
+   margin-left: 8px;*/
 }
 
 .footer_left {

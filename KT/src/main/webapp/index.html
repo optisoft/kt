@@ -2,6 +2,9 @@
 <html>
 <head>
    <title></title>
+   
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
    <script type="text/javascript">
 
       /* Very simple detection of currently support clients - Android & iOS */
@@ -13,7 +16,8 @@
                ) {
             document.location = 'mobile.html';
          } else {
-            document.location = 'desktop.html';
+            alert("Obsługiwana jest jedynie wersja mobilna.");
+            document.location = 'mobile.html';
          }
       }
 
