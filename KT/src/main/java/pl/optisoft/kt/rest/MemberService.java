@@ -53,20 +53,15 @@ public class MemberService {
    private Validator validator;
    
    @Context SecurityContext security;
-
+   
    @GET
    @Produces("text/xml")
    public List<Member> listAllMembers() {
 	   
-	  log.info("Zalogowany uzytkownik:" + security.getUserPrincipal().getName());
-	  if(security.isUserInRole("Administratorzy"))
-		  log.info("Posiada rolę: " + "Administratorzy");
-      // Use @SupressWarnings to force IDE to ignore warnings about "genericizing" the results of
+	  // Use @SupressWarnings to force IDE to ignore warnings about "genericizing" the results of
       // this query
       @SuppressWarnings("unchecked")
      
-      
-
       // We recommend centralizing inline queries such as this one into @NamedQuery annotations on
       // the @Entity class
       // as described in the named query blueprint:
@@ -74,6 +69,21 @@ public class MemberService {
       final List<Member> results = em.createQuery("select m from Member m order by m.name").getResultList();
       
       return results;
+   }
+   
+   @GET
+   @Path("/isAdmin")
+   @Produces(MediaType.TEXT_PLAIN)
+   public String isAdmin()
+   {
+		log.info("Zalogowany uzytkownik:" + security.getUserPrincipal().getName());
+		if (security.isUserInRole("Administratorzy"))
+		{
+			log.info("Posiada rolę: " + "Administratorzy");
+			return "true";
+		}
+		else
+			return "false";
    }
 
    @GET

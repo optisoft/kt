@@ -15,11 +15,16 @@
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
 
 	<link type="text/css" rel="stylesheet" href="../resources/css/m.screen.css" />
-	
+		
 </head>
 
 <body>
+	
 	<div data-role="page" id="login" data-theme="b">
+	
+		<script type="text/javascript">
+			removeCookie("isAdmin");
+		</script>
 
 		<div data-role="header" data-theme="b" data-position="fixed">
 			<a href="#" data-rel="back" data-role="button" data-inline="true" data-icon="arrow-l" data-theme="c">Wróć</a>
@@ -33,11 +38,22 @@
 			<center><h3>Dane konta LDAP:</h3></center>
 			
 			<form name="login_form" method="POST" action="j_security_check" data-ajax="false">
-				<input type="text" name="j_username" id="username" value="" placeholder="Login" data-theme="c" onkeypress="submitLoginOnEnter(event)"/>
+				<input type="text" name="j_username" id="j_username" value="" placeholder="Login" data-theme="c" onkeypress="submitLoginOnEnter(event)"/>
 				<br/>
-				<input type="password" name="j_password" id="password" value="" placeholder="Hasło" data-theme="c" onkeypress="submitLoginOnEnter(event)"/>
+				<input type="password" name="j_password" id="j_password" value="" placeholder="Hasło" data-theme="c" onkeypress="submitLoginOnEnter(event)"/>
 				<input type="submit" data-role="none" id="j_submit" value="Submit" style="display: none;"/>
 			</form>
+			
+			<script type="text/javascript">
+				var username = getCookie("username");
+				if (username != null && username != "") {
+					$("#j_username").val(username);
+				}
+				var password = getCookie("password");
+				if (password != null && password != "") {
+					$("#j_password").val(password);
+				}
+			</script>
 			
 			<!-- <div data-role="fieldcontain" class="ui-hide-label">
 				<label for="login_input">Login:</label>

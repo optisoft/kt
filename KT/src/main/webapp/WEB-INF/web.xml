@@ -33,4 +33,7 @@
  <security-role>
   <role-name>Administratorzy</role-name>
  </security-role>
+ <security-role>
+  <role-name>Specjaliści</role-name>
+ </security-role>
 </web-app>
