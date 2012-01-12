@@ -16,29 +16,25 @@
 
 	<link type="text/css" rel="stylesheet" href="../resources/css/m.screen.css" />
 	
-	<script type="text/javascript">
-		$(document).ready(function() {	
-			showForAdmin("addButton")
-		});
-	</script>
-
 </head>
 
 <body>
 		
-	<div data-role="page" id="help" data-theme="b">
+	<div data-role="page" id="allPeoplePage" data-theme="b">
 	
 		<div data-role="header" data-theme="b" data-position="fixed">
 			<a href="#" data-rel="back" data-role="button" data-inline="true" data-icon="arrow-l" data-theme="c">Wróć</a>
-			<a href="#addNew" id="addButton" data-role="button" data-inline="true" data-icon="plus" data-theme="c" style="display: none;">Dodaj</a>
 			<h1>Lista osób</h1>
-			
+			<a href="#addNew" id="addButton" data-role="button" data-inline="true" data-icon="plus" data-theme="c" style="display: none;">Dodaj</a>
 		</div>
 		<!-- /header -->
 
 		<div data-role="content">
-						
-						
+			<br/>
+			
+			<div id="peopleList">
+			</div>
+		
 		</div>
 		<!-- /content -->
 		

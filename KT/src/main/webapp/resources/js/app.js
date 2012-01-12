@@ -8,10 +8,14 @@ $(document).bind("mobileinit", function() {
 });
 
 /* Przesuniecie w dol, zeby ukryc pasek adresu na Androidzie. */
-$(document).ready(function() {
+$(document).ready(function() { //funkcja ready wywoływana jest tylko raz po potem strony ładują się poprzez Ajax i są wstrzykiwane. Trzeba uzyc pageinit.
 	if (navigator.userAgent.match(/Android/i)) {
 		window.scrollTo(0, 1);
 	}
+	$( '#allPeoplePage' ).live( 'pageshow',function(event){
+		  showForAdmin("addButton");
+		  getPeopleList();
+	});
 });
 
 function submitLogin() {
@@ -29,11 +33,6 @@ function submitLoginOnEnter(event) {
 	} else {
 		return true;
 	}
-}
-
-/* coś nie działa, dlatego uzywam cookies */
-function dontforget(theValueToRemember, theNameIWillCallIt) {
-	window[theNameIWillCallIt] = theValueToRemember;
 }
 
 function getCookie(c_name) {
@@ -63,7 +62,7 @@ function removeCookie(c_name) {
 }
 
 function getRestIsAdmin(id) {
-	$.get('../rest/members/isAdmin', function(data) {
+	$.get('../rest/people/isAdmin', function(data) {
 		console.log("rest isAdmin request...");
 		if(data == "true") {
 			setCookie("isAdmin", "true");
@@ -114,9 +113,40 @@ function buildMemberRows(members) {
 	return html;
 }
 
+function buildPeopleList(JSONdata) {
+	var html = "";
+	$.each(JSONdata, function(i,person){
+		html += '<p>' + person.uid + '</p>';
+        html += '<p>' + person.sn + '</p>';
+        html += '<br/>';
+      });
+	
+	return html;
+}
+
+function getPeopleList()
+{
+	$("#peopleList").empty().append("aasassa");
+	$(".ui-loader").css({ "top": "252px !important" });
+	//$.mobile.loadingMessage="Ładowanie listy osób";
+	$.mobile.showPageLoadingMsg();
+		
+	//if nie ma w localStorage to pobierz przez REST
+	$.get("../rest/people/all", function(data) {
+		console.log("rest getPeopleList request...");
+		//console.log(data);
+		$("#peopleList").empty().append(buildPeopleList(data));
+		$.mobile.hidePageLoadingMsg();
+	}).error(function(error) {
+		var errStatus = error.status;
+		console.log("error getPeopleList: " + errStatus);
+	});
+}
+
 /* Uses JAX-RS GET to retrieve current member list */
 function updateMemberTable() {
 	$.get('rest/members', function(data) {
+		alert(data);
 		var $members = $(data).find('member');
 
 		$('#members').empty().append(buildMemberRows($members));
