@@ -64,7 +64,10 @@ public class PeopleService {
       LdapConnection ldap = new LdapConnection();
       if(LdapConnection.getCtx() != null)
       {
-    	  final List<Person> results = ldap.searchPersons("(objectClass=inetOrgPerson)");
+    	  String[] returningAttributes = new String[2];
+    	  returningAttributes[0] = "sn";
+    	  returningAttributes[1] = "givenName";
+    	  final List<Person> results = ldap.searchPersons("(objectClass=inetOrgPerson)", returningAttributes);
     	  return results;
       }
       return null;

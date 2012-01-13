@@ -29,7 +29,7 @@ import pl.optisoft.kt.model.Person;
  */
 public class LdapConnection {
 	
-	private static final String PROVIDER_URL = "ldap://127.0.0.1:389";
+	private static final String PROVIDER_URL = "ldap://127.0.0.1:1389";
 	private static final String LOGIN = "cn=Directory Manager";
 	private static final String PASSWORD = "tzw2xhe";
 	
@@ -86,12 +86,13 @@ public class LdapConnection {
 		}
 	}
 	
-	private NamingEnumeration<SearchResult> searchContext(String base, String filter, int scope) throws NamingException
+	private NamingEnumeration<SearchResult> searchContext(String base, String filter, int scope, String[] returningAttributes) throws NamingException
 	{
 		if(ctx == null) return null;
 
 		SearchControls ctls = new SearchControls();
 		ctls.setSearchScope(scope);
+		ctls.setReturningAttributes(returningAttributes);
 
         Name name = new CompositeName().add(base);
         return ctx.search(name, filter, ctls);
@@ -104,13 +105,17 @@ public class LdapConnection {
      * @return lista tożsamości
      * @throws WebAkiraException w przypadku niepowodzenia
      */
-    public List<Person> searchPersons(String query) {
+    public List<Person> searchPersons(String query, String[] returningAttributes) {
         List<Person> result = new ArrayList<Person>();
         
-        log.info("Przeszukaj " + PEOPLE_DN + " filtrem " + query);
-
+        String concat = "";
+        for(String attr : returningAttributes)
+        	concat += " " + attr;
+        
+        log.info("Przeszukaj " + PEOPLE_DN + " filtrem " + query + " zwracając atrybuty:" + concat);
+        
         try {
-            NamingEnumeration<SearchResult> answer = searchContext(PEOPLE_DN, query, SearchControls.SUBTREE_SCOPE);
+            NamingEnumeration<SearchResult> answer = searchContext(PEOPLE_DN, query, SearchControls.SUBTREE_SCOPE, returningAttributes);
             if (answer == null)
             {
             	log.log(Level.SEVERE, "Błąd podczas przeszukiwania gałęzi People");
@@ -119,7 +124,10 @@ public class LdapConnection {
             while (answer.hasMore()) {
                 SearchResult sr = answer.next();
                 Person person = LdapConnection.createPerson(sr);
-                result.add(person);
+                if(result.size() > 500)
+                	break;
+                else
+                	result.add(person);
             }
         } catch (NamingException e) {
         	log.log(Level.SEVERE, "Błąd podczas przeszukiwania gałęzi People");
